@@ -36,17 +36,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch new listings (if URLs provided)
-        if: inputs.airbnb_urls != ''
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: |
-          IFS=',' read -ra URLS <<< "${{ inputs.airbnb_urls }}"
-          for url in "${URLS[@]}"; do
-            echo "Fetching: $url"
-            node scripts/fetch-listing.js "$url" --refresh
-          done
-
       - name: Create host config if missing
         run: |
           if [ ! -f "data/hosts/${{ inputs.slug }}.json" ]; then
