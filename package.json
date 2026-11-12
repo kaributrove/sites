@@ -1,0 +1,21 @@
+{
+  "name": "karibu-generator",
+  "version": "0.1.0",
+  "description": "Karibu Trove — static site generator from Airbnb listings",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "fetch": "node --env-file=.env scripts/fetch-listing.js",
+    "neighbourhood": "node --env-file=.env scripts/build-neighbourhood.js",
+    "generate": "node --env-file=.env scripts/generate.js",
+    "test:scraper": "node scripts/fetch-listing.js --test",
+    "test:neighbourhood": "node --env-file=.env scripts/build-neighbourhood.js --test --verbose"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "cheerio": "^1.0.0",
+    "mustache": "^4.2.0"
+  }
+}

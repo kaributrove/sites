@@ -1,0 +1,74 @@
+name: Generate Host Site
+
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'Host slug (e.g. stays-by-jo)'
+        required: true
+        type: string
+      airbnb_urls:
+        description: 'Comma-separated Airbnb listing URLs (leave blank to use existing data)'
+        required: false
+        type: string
+      refresh:
+        description: 'Re-fetch listings from Airbnb'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch new listings (if URLs provided)
+        if: inputs.airbnb_urls != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          IFS=',' read -ra URLS <<< "${{ inputs.airbnb_urls }}"
+          for url in "${URLS[@]}"; do
+            echo "Fetching: $url"
+            node scripts/fetch-listing.js "$url" --refresh
+          done
+
+      - name: Create host config if missing
+        run: |
+          if [ ! -f "data/hosts/${{ inputs.slug }}.json" ]; then
+            echo "No host config found for ${{ inputs.slug }} — creating placeholder"
+            mkdir -p data/hosts
+            echo '{"slug":"${{ inputs.slug }}","brand":"${{ inputs.slug }}","listing_ids":[],"vetted":false}' > data/hosts/${{ inputs.slug }}.json
+          fi
+
+      - name: Generate static site
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS="--slug ${{ inputs.slug }}"
+          if [ "${{ inputs.refresh }}" = "true" ]; then
+            ARGS="$ARGS --refresh"
+          fi
+          node scripts/generate.js $ARGS
+
+      - name: Commit generated output + data
+        run: |
+          git config user.name  "Karibu Generator"
+          git config user.email "bot@kaributrove.com"
+          git add data/ output/
+          git diff --staged --quiet || git commit -m "generate: ${{ inputs.slug }}"
+          git push

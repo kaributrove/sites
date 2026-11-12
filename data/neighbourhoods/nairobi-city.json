@@ -1,0 +1,41 @@
+{
+  "neighbourhood": null,
+  "city": "Nairobi",
+  "country": "Kenya",
+  "slug": "nairobi-city",
+  "generated_by": "claude-haiku-4-5-20251001",
+  "generated_at": "2026-11-12",
+  "curated": false,
+  "places": [
+    {
+      "name": "Karen Blixen Museum",
+      "category": "Culture",
+      "description": "Explore the colonial-era home of the author of 'Out of Africa' in the leafy Karen neighbourhood, with original furnishings and a beautiful garden setting. The museum offers a window into early 20th-century settler life and costs KES 1,500 for entry.",
+      "walking_distance": "15 min drive from CBD"
+    },
+    {
+      "name": "David Sheldrick Wildlife Trust",
+      "category": "Nature",
+      "description": "Visit rescued baby elephants and other orphaned animals during the 11 AM feeding time, one of Nairobi's most moving experiences. The sanctuary is set on 90 acres in Nairobi National Park with admission at KES 3,000 per person.",
+      "walking_distance": "20 min drive from CBD"
+    },
+    {
+      "name": "Nairobi National Museum",
+      "category": "Culture",
+      "description": "Discover Kenya's natural history, cultural artifacts, and contemporary art galleries in this comprehensive museum located in Museum Hill. It opens at 9:30 AM daily and charges KES 1,000 for adult entry.",
+      "walking_distance": "10 min drive from CBD"
+    },
+    {
+      "name": "Westgate Shopping Mall",
+      "category": "Shopping",
+      "description": "Browse international and local brands, dine at numerous restaurants, and experience modern Nairobi in this upscale shopping centre in Westlands. The mall has ATMs, mobile phone services, and a supermarket for practical needs.",
+      "walking_distance": "12 min drive from CBD"
+    },
+    {
+      "name": "Serena Hotel Wellness Spa",
+      "category": "Wellness",
+      "description": "Relax with traditional Kenyan-inspired treatments and massages at this luxury spa in the Serena Hotel on Kenyatta Avenue in the city centre. Full-body massages start from KES 15,000 and appointments can be arranged same-day.",
+      "walking_distance": "5 min walk from CBD"
+    }
+  ]
+}

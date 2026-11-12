@@ -1,0 +1,46 @@
+name: Sync Availability (iCal)
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # every hour
+  workflow_dispatch:        # manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync all listing iCal feeds
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+          API_BASE: ${{ vars.API_BASE || 'https://api.kaributrove.com' }}
+        run: |
+          if [ ! -f data/listing-ids.txt ]; then
+            echo "No listing-ids.txt found — generating from data/listings/"
+            ls data/listings/*.json 2>/dev/null | xargs -I{} basename {} .json > data/listing-ids.txt || true
+          fi
+          if [ ! -s data/listing-ids.txt ]; then
+            echo "No listings to sync"
+            exit 0
+          fi
+          while IFS= read -r id; do
+            [ -z "$id" ] && continue
+            echo "Syncing iCal for listing $id"
+            curl -s -o /dev/null -w "%{http_code}" -X POST \
+              -H "Authorization: Bearer $SYNC_TOKEN" \
+              "$API_BASE/availability/$id/sync-ical" || echo " (failed)"
+          done < data/listing-ids.txt

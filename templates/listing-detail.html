@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{listing_title}} | {{brand}}</title>
+  <meta name="description" content="{{listing_description_short}}">
+  <meta property="og:title" content="{{listing_title}} | {{brand}}">
+  <meta property="og:description" content="{{listing_description_short}}">
+  <meta property="og:image" content="{{listing_hero_photo}}">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>{{{styles}}}</style>
+</head>
+<body>
+
+  <!-- ── Banner ──────────────────────────────────────────────── -->
+  <div class="banner">
+    <span class="banner__text">
+      <strong>Powered by Karibu Trove</strong> · Get your free direct booking site
+    </span>
+    {{#vetted}}
+    <span class="banner__badge">✦ Karibu Collection</span>
+    {{/vetted}}
+    {{^vetted}}
+    <a href="https://kaributrove.com/host" class="banner__cta" target="_blank" rel="noopener">Get yours free →</a>
+    {{/vetted}}
+  </div>
+
+  <!-- ── Nav ─────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <a class="nav__brand" href="../index.html">{{brand}}</a>
+    <div class="nav__links">
+      <a href="#photos">Photos</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#the-area">The area</a>
+    </div>
+    <div class="nav__actions">
+      <a class="btn btn--primary btn--sm" href="{{whatsapp_booking_url}}" target="_blank" rel="noopener">Book direct</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────── -->
+  <section class="hero hero--detail">
+    <img class="hero__photo" src="{{listing_hero_photo}}" alt="{{listing_title}}" loading="eager">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <a class="hero__back" href="../index.html">← All homes</a>
+      <div class="hero__location">📍 {{city}}</div>
+      <h1 class="hero__title">{{listing_title}}</h1>
+      {{#vetted}}<span class="listing-card__badge" style="position:static;display:inline-block;margin-top:.5rem;">✦ Karibu Collection</span>{{/vetted}}
+    </div>
+  </section>
+
+  <!-- ── Stats ───────────────────────────────────────────────── -->
+  <div class="container">
+    <div class="stats-row">
+      {{#max_guests}}<div class="stat-pill">👤 Sleeps {{max_guests}}</div>{{/max_guests}}
+      {{#bedrooms}}<div class="stat-pill">🛏 {{bedrooms}} bedroom{{bedrooms_plural}}</div>{{/bedrooms}}
+      {{#beds}}<div class="stat-pill">🛏 {{beds}} bed{{beds_plural}}</div>{{/beds}}
+      {{#bathrooms}}<div class="stat-pill">🚿 {{bathrooms}} bath{{bathrooms_plural}}</div>{{/bathrooms}}
+      {{#rating_value}}<div class="stat-pill">★ {{rating_value}} · {{rating_count}} reviews</div>{{/rating_value}}
+    </div>
+  </div>
+
+  <!-- ── Photo grid ──────────────────────────────────────────── -->
+  <div class="container" id="photos" style="padding-top:1.5rem;">
+    <div class="photo-grid">
+      <div class="photo-grid__main">
+        <img src="{{photo_1}}" alt="{{listing_title}} — photo 1" loading="eager">
+      </div>
+      {{#photo_2}}
+      <div class="photo-grid__sub">
+        <img src="{{photo_2}}" alt="{{listing_title}} — photo 2" loading="lazy">
+      </div>
+      {{/photo_2}}
+      {{#photo_3}}
+      <div class="photo-grid__sub">
+        <img src="{{photo_3}}" alt="{{listing_title}} — photo 3" loading="lazy">
+      </div>
+      {{/photo_3}}
+      {{#photo_4}}
+      <div class="photo-grid__sub">
+        <img src="{{photo_4}}" alt="{{listing_title}} — photo 4" loading="lazy">
+      </div>
+      {{/photo_4}}
+      {{#photo_5}}
+      <div class="photo-grid__sub photo-grid__sub--last">
+        <img src="{{photo_5}}" alt="{{listing_title}} — photo 5" loading="lazy">
+        {{#has_many_photos}}
+        <button class="photo-grid__show-all" onclick="window.open('{{photo_all_url}}','_blank')">Show all {{photo_count}} photos</button>
+        {{/has_many_photos}}
+      </div>
+      {{/photo_5}}
+    </div>
+  </div>
+
+  <!-- ── Detail layout ───────────────────────────────────────── -->
+  <div class="container">
+    <div class="detail-layout">
+
+      <!-- Left: description + content -->
+      <div class="detail-content">
+
+        <!-- Description -->
+        <div class="detail-description">
+          <h2>About this apartment</h2>
+          <p>{{listing_description}}</p>
+        </div>
+
+        <!-- Host strip -->
+        <div class="host-strip">
+          {{#host_avatar}}
+          <img class="host-strip__avatar" src="{{host_avatar}}" alt="{{host_name}}">
+          {{/host_avatar}}
+          {{^host_avatar}}
+          <div class="host-strip__avatar" style="background:var(--border);display:flex;align-items:center;justify-content:center;font-size:1.25rem;">👤</div>
+          {{/host_avatar}}
+          <div class="host-strip__info">
+            <h3>Hosted by {{host_name}} {{#host_is_superhost}}<span class="host-strip__super">Superhost</span>{{/host_is_superhost}}</h3>
+            <p>{{#host_time_as_host}}{{host_time_as_host}} · {{/host_time_as_host}}{{#host_response_time}}{{host_response_time}}{{/host_response_time}}</p>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Amenities -->
+        <div id="amenities">
+          <h2 class="mb-2">What this place offers</h2>
+          <div class="amenity-list">
+            {{#amenities}}
+            <div class="amenity-item">{{.}}</div>
+            {{/amenities}}
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Reviews -->
+        {{#has_reviews}}
+        <div>
+          <div class="rating-header">
+            <div class="rating-score">★ {{rating_value}}</div>
+            <div class="rating-meta">
+              <strong>{{rating_count}} reviews</strong>
+              {{#is_guest_fave}}Guest Favourite{{/is_guest_fave}}
+            </div>
+          </div>
+          <div class="review-grid">
+            {{#reviews}}
+            <div class="review-card">
+              <div class="review-card__author">{{author}}</div>
+              {{#date}}<div class="review-card__date">{{date}}</div>{{/date}}
+              <div class="review-card__text">{{text}}</div>
+            </div>
+            {{/reviews}}
+          </div>
+          <div class="airbnb-reviews-link">
+            <a href="{{source_url}}" target="_blank" rel="noopener">Read all reviews on Airbnb →</a>
+          </div>
+        </div>
+        <hr class="divider">
+        {{/has_reviews}}
+
+        <!-- House rules -->
+        {{#has_rules}}
+        <div>
+          <h2 class="mb-2">House rules</h2>
+          <ul class="rules-list">
+            {{#house_rules}}
+            <li>{{.}}</li>
+            {{/house_rules}}
+          </ul>
+          {{#checkin_time}}<p class="mt-2 text-sm text-muted">Check-in: {{checkin_time}}</p>{{/checkin_time}}
+          {{#checkout_time}}<p class="mt-1 text-sm text-muted">Check-out: {{checkout_time}}</p>{{/checkout_time}}
+        </div>
+        <hr class="divider">
+        {{/has_rules}}
+
+      </div><!-- /detail-content -->
+
+      <!-- Right: booking widget -->
+      <aside class="booking-widget">
+        <div class="booking-widget__header">
+          <div class="booking-widget__label">Book direct</div>
+          {{#direct_price}}
+          <div class="booking-widget__price">KSh {{direct_price}} <span>/ night</span></div>
+          <div class="booking-widget__save">Save ~12% vs Airbnb</div>
+          {{/direct_price}}
+          {{^direct_price}}
+          <div class="booking-widget__price" style="font-size:1.1rem;font-family:var(--font-sans)">Contact for direct rate</div>
+          {{/direct_price}}
+        </div>
+
+        <!-- Availability calendar (populated by Cloudflare Worker) -->
+        <div class="booking-widget__calendar">
+          <div
+            id="availability-widget"
+            data-listing-id="{{listing_id}}"
+            data-api="https://api.kaributrove.com"
+            data-wa="{{whatsapp_booking_url}}"
+          >
+            <div class="calendar-placeholder">
+              Loading availability…
+            </div>
+          </div>
+        </div>
+
+        <hr class="booking-widget__divider">
+
+        <div class="booking-widget__actions">
+          <a class="btn btn--mpesa btn--full" href="tel:{{mpesa_number}}">
+            💳 Pay via M-Pesa
+          </a>
+          <a class="btn btn--wa btn--full" href="{{whatsapp_booking_url}}" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp to book
+          </a>
+          <a class="btn btn--card btn--full" href="{{whatsapp_booking_url}}" target="_blank" rel="noopener">
+            🌍 Pay by card
+          </a>
+        </div>
+
+        <p class="booking-widget__note">
+          You'll receive check-in details after booking.<br>
+          Questions? We reply within a few hours.
+        </p>
+
+        <div class="booking-widget__airbnb">
+          <a href="{{source_url}}" target="_blank" rel="noopener">★ Read Airbnb reviews →</a>
+        </div>
+      </aside>
+
+    </div><!-- /detail-layout -->
+  </div>
+
+  <!-- ── Neighbourhood guide ──────────────────────────────────── -->
+  {{#has_guide}}
+  <section class="section" id="the-area">
+    <div class="container">
+      <div class="section__header">
+        <h2>Explore {{guide_area}} like a local</h2>
+        <p>Places worth visiting during your stay.</p>
+      </div>
+      <div class="guide-grid">
+        {{#guide_places}}
+        <div class="guide-card">
+          <div class="guide-card__photo">
+            {{#photo_url}}<img src="{{photo_url}}" alt="{{name}}" loading="lazy">{{/photo_url}}
+            {{^photo_url}}<div style="background:var(--border);width:100%;height:100%;"></div>{{/photo_url}}
+            <span class="guide-card__cat">{{category}}</span>
+          </div>
+          <div class="guide-card__body">
+            <div class="guide-card__name">{{name}}</div>
+            <div class="guide-card__desc">{{description}}</div>
+            {{#walking_distance}}<div class="guide-card__dist">📍 {{walking_distance}}</div>{{/walking_distance}}
+          </div>
+        </div>
+        {{/guide_places}}
+      </div>
+    </div>
+  </section>
+  {{/has_guide}}
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <h3>{{brand}}</h3>
+        <p>{{brand}} · {{city}} apartments, booked securely direct.</p>
+        <p class="footer__power">Powered by <a href="https://kaributrove.com" target="_blank" rel="noopener">Karibu Trove</a></p>
+      </div>
+      <a class="btn btn--outline" href="{{whatsapp_booking_url}}" target="_blank" rel="noopener" style="border-color:rgba(255,255,255,.4);color:#fff;">Book direct →</a>
+    </div>
+    {{^vetted}}
+    <div class="container">
+      <div class="ad-slot">
+        <span class="ad-slot__text"><strong>Looking for more vetted stays?</strong> Browse the Karibu Collection — apartments that have cleared our five-check standard.</span>
+        <a class="btn btn--primary btn--sm" href="https://kaributrove.com" target="_blank" rel="noopener">Browse the Collection →</a>
+      </div>
+    </div>
+    {{/vetted}}
+  </footer>
+
+  <!-- ── Availability calendar JS (Cloudflare Worker) ────────── -->
+  <script>
+  (function () {
+    var el  = document.getElementById('availability-widget');
+    if (!el) return;
+    var id  = el.dataset.listingId;
+    var api = el.dataset.api;
+    var wa  = el.dataset.wa;
+
+    fetch(api + '/availability/' + id)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function (data) { renderCalendar(el, data, wa); })
+      .catch(function ()   { renderFallback(el, wa); });
+
+    function renderFallback(el, wa) {
+      el.innerHTML =
+        '<div class="calendar-placeholder">' +
+          '<a class="btn btn--outline btn--sm" href="' + wa + '" target="_blank" rel="noopener">' +
+            'WhatsApp us to check dates →' +
+          '</a>' +
+        '</div>';
+    }
+
+    function renderCalendar(el, data, wa) {
+      var booked = (data.booked_ranges || []).flatMap(function (r) {
+        return dateRange(r.from, r.to);
+      });
+      var bookedSet = new Set(booked);
+      var today     = new Date();
+      today.setHours(0, 0, 0, 0);
+      var months    = buildMonths(today, 2);
+
+      var html = '<div style="font-size:.8125rem;">';
+      months.forEach(function (m) {
+        html += '<div style="margin-bottom:1rem;">';
+        html += '<div style="font-weight:600;margin-bottom:.5rem;font-size:.875rem;">' + m.label + '</div>';
+        html += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center;">';
+        ['S','M','T','W','T','F','S'].forEach(function (d) {
+          html += '<div style="font-weight:600;color:var(--text-muted);padding:3px 0;">' + d + '</div>';
+        });
+        for (var i = 0; i < m.startDay; i++) html += '<div></div>';
+        m.days.forEach(function (day) {
+          var key     = fmtDate(day);
+          var past    = day < today;
+          var blocked = bookedSet.has(key);
+          var style   = 'padding:5px 2px;border-radius:4px;cursor:default;';
+          if (past)    style += 'color:var(--text-light);';
+          else if (blocked) style += 'background:#FFE5E5;color:#C0392B;text-decoration:line-through;';
+          else         style += 'background:#E8F5E9;color:var(--green);font-weight:500;cursor:pointer;';
+          html += '<div style="' + style + '">' + day.getDate() + '</div>';
+        });
+        html += '</div></div>';
+      });
+      html += '</div>';
+      html += '<p style="font-size:.6875rem;color:var(--text-light);margin-top:.5rem;">🟢 Available &nbsp; 🔴 Booked</p>';
+      el.innerHTML = html;
+    }
+
+    function buildMonths(from, count) {
+      var result = [];
+      for (var m = 0; m < count; m++) {
+        var d  = new Date(from.getFullYear(), from.getMonth() + m, 1);
+        var end = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+        var days = [];
+        for (var i = 1; i <= end.getDate(); i++) days.push(new Date(d.getFullYear(), d.getMonth(), i));
+        result.push({ label: d.toLocaleString('en', { month: 'long', year: 'numeric' }), startDay: d.getDay(), days: days });
+      }
+      return result;
+    }
+
+    function dateRange(from, to) {
+      var dates = [], cur = new Date(from);
+      var end   = new Date(to);
+      while (cur <= end) { dates.push(fmtDate(cur)); cur.setDate(cur.getDate() + 1); }
+      return dates;
+    }
+
+    function fmtDate(d) {
+      return d.getFullYear() + '-' +
+        String(d.getMonth() + 1).padStart(2, '0') + '-' +
+        String(d.getDate()).padStart(2, '0');
+    }
+  })();
+  </script>
+
+</body>
+</html>

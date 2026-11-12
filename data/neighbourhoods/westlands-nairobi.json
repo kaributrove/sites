@@ -1,0 +1,41 @@
+{
+  "neighbourhood": "Westlands",
+  "city": "Nairobi",
+  "country": "Kenya",
+  "slug": "westlands-nairobi",
+  "generated_by": "claude-haiku-4-5-20251001",
+  "generated_at": "2026-11-12",
+  "curated": false,
+  "places": [
+    {
+      "name": "Westlands Shopping Centre",
+      "category": "Shopping",
+      "description": "A major retail hub housing international brands, local shops, and a supermarket, perfect for picking up essentials or gifts without venturing far from your accommodation. The centre is open from 9 AM to 9 PM daily and offers ATMs and currency exchange services.",
+      "walking_distance": "2 min walk"
+    },
+    {
+      "name": "Nairobi Hospital",
+      "category": "Practical",
+      "description": "One of Kenya's most reputable private hospitals, offering 24-hour emergency services and excellent care for any health concerns during your stay. It's conveniently located and accepts international insurance with English-speaking medical staff.",
+      "walking_distance": "5 min walk"
+    },
+    {
+      "name": "The Bomas of Kenya",
+      "category": "Culture",
+      "description": "A cultural centre showcasing Kenya's diverse ethnic groups through traditional architecture, crafts, and performances located just beyond Westlands. Entry costs around KES 800–1,200 and you can experience authentic Kenyan heritage in 2–3 hours.",
+      "walking_distance": "15 min drive"
+    },
+    {
+      "name": "Brew Bistro",
+      "category": "Food",
+      "description": "A popular café and restaurant in Westlands serving excellent coffee, fresh pastries, and all-day brunch favourites favoured by business professionals and travellers alike. Their flat white and avocado toast are highly recommended, with mains ranging from KES 600–1,500.",
+      "walking_distance": "3 min walk"
+    },
+    {
+      "name": "Karura Forest",
+      "category": "Nature",
+      "description": "Nairobi's largest urban forest offering walking trails, scenic views, and a peaceful escape from the city bustle, with an entry fee of KES 600 for visitors. Early morning visits are ideal for spotting birds and enjoying fresh air before it gets too warm.",
+      "walking_distance": "10 min drive"
+    }
+  ]
+}
