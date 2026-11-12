@@ -48,6 +48,9 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          echo "=== node version ===" && node --version
+          echo "=== last 5 lines of fetch-listing.js ===" && tail -5 scripts/fetch-listing.js
+          echo "=== git log ===" && git log --oneline -3
           ARGS="--slug ${{ inputs.slug }}"
           if [ "${{ inputs.refresh }}" = "true" ]; then
             ARGS="$ARGS --refresh"
