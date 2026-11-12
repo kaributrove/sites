@@ -219,6 +219,13 @@ export async function generate(slug, options = {}) {
     throw new Error(`Host config not found: ${hostPath}\nCreate it at data/hosts/${slug}.json`);
   }
   const host = JSON.parse(fs.readFileSync(hostPath, 'utf8'));
+
+  if (!host.listing_ids || host.listing_ids.length === 0) {
+    console.warn(`[generate] No listing_ids in data/hosts/${slug}.json — nothing to generate.`);
+    console.warn(`  Add Airbnb listing IDs to listing_ids[] and re-run.`);
+    return null;
+  }
+
   console.log(`\n[generate] ${host.brand} (${slug})`);
   console.log(`  listings: ${host.listing_ids.join(', ')}`);
 
