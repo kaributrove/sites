@@ -242,6 +242,6 @@ async function main() {
 }
 
 // Only run CLI when invoked directly (not when imported)
-if (import.meta.url === new URL(process.argv[1], 'file://').href) {
+if (process.argv[1] && fileURLToPath(import.meta.url) === fs.realpathSync(process.argv[1])) {
   main();
 }
