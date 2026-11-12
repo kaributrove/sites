@@ -1,0 +1,13 @@
+{
+  "slug": "hello-host",
+  "brand": "Hello Host",
+  "tagline": "",
+  "whatsapp_number": "15127978671",
+  "mpesa_number": null,
+  "contact_pref": "whatsapp",
+  "listing_ids": [
+    "1280718313866356892"
+  ],
+  "vetted": false,
+  "created_at": "2026-11-12"
+}
