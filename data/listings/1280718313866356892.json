@@ -1,0 +1,99 @@
+{
+  "listing_id": "1280718313866356892",
+  "source_url": "https://www.airbnb.com/rooms/1280718313866356892?currency=KES&locale=en",
+  "scraped_at": "2026-11-12T08:45:24.550Z",
+  "title": "Room in Austin, Texas",
+  "description": "Cozy private room with luxurious queen bed, sleeps 2. Minutes from airport, Downtown, and UT Austin. Perfect for urban adventurers, event-goers, and campus visitors. Shared bathroom, in-room TV, and fridge in kitchen. Free WiFi and street parking. We're a text away for local tips. Ideal for music lovers, business travelers, or university events. Immerse in Austin's spirit by day, unwind in your stylish retreat by night. <br /><br />Pls Note: Cooking is not allowed!",
+  "property_type": "Private room in home",
+  "location": {
+    "city": "Austin",
+    "country": null,
+    "neighbourhood": "East Austin, Austin",
+    "neighbourhood_slug": "east-austin-austin-austin",
+    "latitude": 30.3083,
+    "longitude": -97.7046
+  },
+  "specs": {
+    "bedrooms": 1,
+    "bathrooms": null,
+    "beds": 1,
+    "max_guests": 2
+  },
+  "host": {
+    "name": "Jo",
+    "is_superhost": false,
+    "avatar_url": "https://a0.muscache.com/im/Portrait/Avatars/v2/magenta?im_w=240&im_t=J&im_s=86&im_f=AirbnbCerealLatinMedium.ttf&im_c=901e7c&script=latin",
+    "about": null,
+    "stats": {
+      "response_time": "Responds within a few hours",
+      "response_rate": "Response rate: 80%",
+      "reviews": 107,
+      "rating": 4.6,
+      "time_as_host": "2 years hosting"
+    }
+  },
+  "rating": {
+    "value": 4.48,
+    "count": "27",
+    "is_guest_fave": false,
+    "category_ratings": [
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "photos": [
+    "https://a0.muscache.com/im/pictures/miso/Hosting-1280718313866356892/original/8af309cd-da85-44bf-8ecb-b4a11652f5b1.jpeg",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-1280718313866356892/original/f891d71a-eab1-4340-a29c-2478420a15d3.jpeg",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-1280718313866356892/original/359b7016-35b7-4aab-bb14-f401e3e669e9.jpeg",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-1280718313866356892/original/28fc6af9-c0d7-4c01-857c-c28fd5bd755e.jpeg",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-1280718313866356892/original/2c26859e-cbdf-41cb-845d-176e8fb0bf17.jpeg",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-1280718313866356892/original/7dae8ed4-d5dd-43fe-8661-2365ac3f364f.jpeg",
+    "https://a0.muscache.com/im/pictures/miso/Hosting-1280718313866356892/original/b0725cbf-6bdd-4e6d-97c0-d69376a6fb10.jpeg"
+  ],
+  "amenities": [
+    "Shampoo",
+    "Hot water",
+    "Washer",
+    "Dryer – In unit",
+    "Iron",
+    "TV",
+    "Air conditioning",
+    "Ceiling fan",
+    "Heating",
+    "Lock on bedroom door",
+    "Exterior security cameras on property",
+    "Smoke alarm",
+    "Carbon monoxide alarm",
+    "Wifi",
+    "Kitchen",
+    "Refrigerator",
+    "Free street parking",
+    "Paid parking on premises – 1 space",
+    "Single level home",
+    "Self check-in",
+    "Keypad"
+  ],
+  "house_rules": [
+    "Up to 2 overnight guests",
+    "No pets",
+    "No smoking",
+    "Quiet hours",
+    "No parties or events",
+    "No commercial photography"
+  ],
+  "pricing": {
+    "nightly_display": null,
+    "direct_nightly": null
+  },
+  "checkin_time": null,
+  "checkout_time": null,
+  "_meta": {
+    "photo_count": 7,
+    "amenity_count": 21,
+    "has_full_data": true
+  }
+}
