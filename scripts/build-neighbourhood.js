@@ -324,4 +324,7 @@ async function main() {
   }
 }
 
-main();
+// Only run CLI when invoked directly (not when imported)
+if (import.meta.url === new URL(process.argv[1], 'file://').href) {
+  main();
+}
